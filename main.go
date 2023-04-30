@@ -45,7 +45,13 @@ func foo(w http.ResponseWriter, req *http.Request) {
 		First: "Jenny",
 	}
 
-	err := json.NewEncoder(w).Encode(p1)
+	p2 := person{
+		First: "James",
+	}
+
+	people := []person{p1, p2}
+
+	err := json.NewEncoder(w).Encode(people)
 	if err != nil {
 		log.Println("Encode bad data", err)
 	}
